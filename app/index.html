@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunset Press — GTA-style Cover Studio</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">SP</div>
+    <div>
+      <h1>SUNSET PRESS</h1>
+      <p>Cover Studio — turn your photos into poster art</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <span id="status" class="status">Ready — your photos never leave this machine.</span>
+    <button id="export-one" class="btn primary" type="button">Export PNG</button>
+    <button id="export-all" class="btn accent" type="button">Export all 3 sizes</button>
+  </div>
+</header>
+
+<main class="studio">
+  <aside class="panel left">
+    <section>
+      <h2>Photos</h2>
+      <p class="hint">Upload your own photos, or use the samples. Click one to put it in the selected panel; double-click to fill every panel.</p>
+      <div id="photos" class="photos"></div>
+      <input id="file-input" type="file" accept="image/*" multiple hidden>
+      <button id="add-photos" class="btn" type="button">+ Add photos from your machine</button>
+    </section>
+    <section>
+      <h2>Layout</h2>
+      <div id="layouts" class="stack"></div>
+    </section>
+    <section>
+      <h2>Grade</h2>
+      <div id="grades" class="swatches"></div>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <canvas id="preview" width="1080" height="1350"></canvas>
+    <p class="stage-hint">Click a panel to select it · Drag inside it to move the photo · Scroll to zoom · Drop a photo onto a panel to fill it</p>
+  </section>
+
+  <aside class="panel right">
+    <section>
+      <h2>Caption</h2>
+      <label>Title
+        <input id="cap-title" type="text" maxlength="40" value="SUNSET DRIVE">
+      </label>
+      <label>Subtitle
+        <input id="cap-sub" type="text" maxlength="60" value="neon nights on the coast">
+      </label>
+      <label>Kicker
+        <input id="cap-kicker" type="text" maxlength="60" value="VICE COAST • EST. 2026">
+      </label>
+      <label>Title fill
+        <select id="title-fill">
+          <option value="gradient" selected>Sunset gradient</option>
+          <option value="solid">Solid colour</option>
+          <option value="outline">Outline</option>
+        </select>
+      </label>
+    </section>
+    <section>
+      <h2 id="panel-label">Panel 1 of 9</h2>
+      <label>Photo in this panel
+        <select id="panel-photo"></select>
+      </label>
+      <label>Zoom <span class="val" id="zoom-val"></span>
+        <input id="panel-zoom" type="range" min="1" max="3" step="0.01" value="1.18">
+      </label>
+      <label>Move left / right
+        <input id="panel-x" type="range" min="-100" max="100" step="1" value="0">
+      </label>
+      <label>Move up / down
+        <input id="panel-y" type="range" min="-100" max="100" step="1" value="0">
+      </label>
+    </section>
+    <section>
+      <h2>Export size</h2>
+      <div id="sizes" class="stack"></div>
+      <label class="check"><input id="toggle-grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="toggle-decor" type="checkbox" checked> Sunset decor (sun, skyline, palms)</label>
+    </section>
+    <section class="about">
+      <h2>About</h2>
+      <p>100% offline: no uploads, no tracking, no watermark. Fonts are OFL-licensed files inside this app. Every pixel of the art is drawn in code or comes from your photos.</p>
+    </section>
+  </aside>
+</main>
+
+<div id="shot-stage" hidden></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
